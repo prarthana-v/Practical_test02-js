@@ -1,0 +1,29 @@
+<html>
+
+	<table id="root" border="1"></table>
+	<script>
+		var root = document.getElementById('root');
+		for(var i=1;i<=8;i++){
+			var tr = document.createElement('tr');
+			root.appendChild(tr);
+			
+			for(var j=1;j<=8;j++){
+				var td = document.createElement('td');
+				tr.appendChild(td);
+				td.width="50px";
+				td.height="50px";
+				
+				if(i%2==1){
+					if(j%2==1){
+						td.style.backgroundColor="black";
+					}
+				}
+				else{
+					if(j%2==0){
+						td.style.backgroundColor="black";
+					}
+				}
+			}
+		}
+	</script>
+</html>

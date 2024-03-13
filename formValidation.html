@@ -1,0 +1,116 @@
+<html>
+	<style>
+		
+		table tr td input{
+			width:400px;
+			height: 30px;
+			padding: 10px;
+		}
+		.text-center{
+			text-align: left;
+			padding:0 5px;
+		}
+		table tr:last-child td input{
+			width:100%;
+		}
+	</style>
+	<table border="1" >
+		<tr>
+	
+				<td class="text-center">Name :-</td>
+				<td><input type="text" id="name" placeholder="Enter your name here...">
+					<span class="err" id="nameerr"></span></td>	
+		
+		</tr>
+		<tr>
+	
+				<td class="text-center">Email :-</td>
+				<td><input type="text" id="email" placeholder="Enter your Email here...">
+					<span class="err" id="emailerr"></span>	</td>
+		
+		</tr>
+		<tr>
+	
+				<td class="text-center">Password :- </td>
+				<td><input type="text" id="pass" placeholder="Enter your password here...">
+					<span class="err" id="passerr"></span></td>	
+		
+		</tr>
+		<tr>
+	
+				<td class="text-center">City :- </td>
+				<td><input type="text" id="city" placeholder="Enter your city here...">
+				<span class="err" id="cityerr"></span></td>	
+		
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input onclick="save()" type="button" value="submit">
+			</td>
+		</tr>
+	</table>
+	<script>
+		const save=()=>{
+			let username = document.getElementById('name').value;
+			let usermail = document.getElementById('email').value;
+			let password = document.getElementById('pass').value;
+			let city = document.getElementById('city').value;
+
+			if(!username){
+				let err = document.getElementById('name');
+				err.placeholder ="* name is required..";			
+			}
+			else{
+				document.getElementById('name').value="";
+			}
+			
+			if(!password){
+				let err = document.getElementById('pass');
+				err.placeholder ="* password is required..";			
+			}
+
+			else{
+				let err = document.getElementById('pass');
+
+				if(password.length<8){
+					err.value="";
+					err.placeholder="* password length should be greater than 8..";
+				}
+				else if (password.search(/[a-z]/) < 0) {
+					err.value="";
+					document.getElementById('pass').placeholder = "Password must contain at least one lowercase letter"
+					
+				} else if (password.search(/[A-Z]/) < 0) {
+					err.value="";
+					document.getElementById('pass').placeholder = "Password must contain at least one uppercase letter"
+					
+				} else if (password.search(/[0-9]/) < 0) {
+					err.value="";
+					document.getElementById('pass').placeholder = "Password must contain at least one number"
+				}
+				else{
+					document.getElementById('pass').value="";
+				}
+			}
+			
+			if(!usermail){
+				let err = document.getElementById('email');
+				err.placeholder ="* Email is required..";			
+			}
+			else{
+					document.getElementById('email').value="";
+			}
+			
+			if(!city){
+				let err = document.getElementById('city');
+				err.placeholder ="* city is required..";			
+			}
+			else{
+					document.getElementById('city').value="";
+			}	
+
+			
+		}
+	</script>
+</html>

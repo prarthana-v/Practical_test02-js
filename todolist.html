@@ -1,0 +1,72 @@
+<html>
+	<style>
+	
+	</style>
+	<center>
+			<table><tr><th>
+				<input type="text" placeholder="take a note here......." id="taskinput">
+				<button onclick="addtask()">Add task</button>
+			</th></tr></tr></table>
+			<table border="1" cellpadding="10">
+				<thead>
+					<th>SR.no</th>
+					<th>Tsaks</th>
+					<th>Action</th>
+				</thead>
+				<tbody id="alltasks"></tbody>
+			</table>
+	</center>
+	<script>
+		let list = [
+			{ id:1, task:'clean', },
+			{ id:2, task:'eat', },
+		];
+		
+		<!-- view ----------------------------------------------------------------------------------------- -->
+		const view=()=>{
+			let tbl="";
+			let ctn=0;
+			list.map((val)=>{
+				ctn++;
+				return tbl +=
+					`
+					<tr>
+						<td>${ctn}</td>
+						<td>${val.task}</td>
+						<td><button onclick="deltask(${val.id})">Delete</button></td>
+					</tr>
+				
+				`
+			})
+			
+				document.getElementById('alltasks').innerHTML = tbl;
+			}
+		view();
+		
+		<!-- delete ---------------------------------------------------------------------------------------- -->
+		const deltask=(id)=>{
+			var newlist = list.filter((val)=>{
+				return val.id != id;
+			})
+			
+			list=newlist;
+			view();
+			alert(`${id} sucess deleted..`);
+		}
+		
+		<!-- add ------------------------------------------------------------------------------------------------>
+		const addtask=()=>{
+			let newtask = document.getElementById('taskinput').value;
+			let newid = Math.floor(Math.random()*10000);
+			let obj={
+				id:newid,
+				task:newtask,
+			}
+			
+			list.push(obj);
+			view();
+			document.getElementById('taskinput').value="";
+		}
+		<!-- console.log(list); -->
+	</script>
+</html>
